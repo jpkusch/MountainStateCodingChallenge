@@ -1,7 +1,7 @@
 I. Purpose
 
-   This repository is my solution to the 2019 Jr. Coding Challenge from
-   Mountain State Software Solutions.
+    This repository is my solution to the 2019 Jr. Coding Challenge from
+    Mountain State Software Solutions.
 
 II. Getting Started
 
