@@ -1,14 +1,21 @@
 I. Purpose
 
+    This repo holds my solution to the 2019 jr. coding challenge for Mountain
+    Side Software Solutions. It's a display of how I solve software issues
+    for the purposes of the hiring process.
+
 II. Getting Started
 
+    I built this project using IntelliJ idea to run it. If you wish to use Maven
+    I did provide a skeleton .pom file to use for setup.
+    
 III. Design
-    a. Dependencies
-        This project uses two outside resources to help in its job, SQLite-JDBC and Maven.
-        I chose to use Maven to make running this project consistent and quick between system
-        and I used SQLite-JDBC to give myself a reasonable interface to run SQLite queries.
 
-        <MAKE LATER> Talk of CSVParser / if I change to Opencsv </MAKE LATER>
+    a. Dependencies
+        I ended up just using sqlite-jdbc so that I could have an interface for
+        SQL queries. At the moment, I'm not completely familiar with Maven, so 
+        it ended up being better for me to focus on completing the work than
+        learning that skill due to the short time frame.
 
     b. Design
         - Driver.java
@@ -24,7 +31,9 @@ III. Design
             short main function and abstract File IO away from the driver.
 
         -CSVParser.java
-            EXPLAIN THE REGEX
+            I ended up deciding to write my own parser due to it being a fairly
+            simple piece of code to create and not wanting to make more
+            dependencies to outside libraries.
 
         -Distributor.java
             The main structural challenge for this class was tracking the three
@@ -32,4 +41,6 @@ III. Design
             make the class's main job tracking three file streams while the mess
             of setup was left in the constructor. 
 
-            The write method ...
+            For efficiency, I ended up choosing to make one long SQL query
+            instead of doing an INSERT query every time I ran the write command.
+            Reconnecting to the database each time had about tripled my runtime.
