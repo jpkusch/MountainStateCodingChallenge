@@ -9,7 +9,7 @@ II. Getting Started
     pom.xml and ensure that sqlite-jdbc-3.30.1.jar is in the base project directory.
     It can then be run as a Maven project at command line or on your preferred IDE.
 
-    This program take 1 argument as input. That argument is the name of a file in the 
+    This program takes 1 argument as input. That argument is the name of a file in the 
     included input directory WITHOUT the file extension.
     
 III. Design
