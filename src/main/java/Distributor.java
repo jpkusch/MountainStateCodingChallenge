@@ -20,19 +20,20 @@ public class Distributor {
    * @param filename Name of the files to output records to
    */
   Distributor(String filename) {
-    String csvPath = System.getProperty("user.dir") + System.getProperty("file.separator")  +
-        "output" + System.getProperty("file.separator") + filename + "-bad.csv";
-
-    dbPath = "jdbc:sqlite:" + System.getProperty("user.dir") + System.getProperty("file.separator") +
-        "output" + System.getProperty("file.separator") + filename + ".db";
-
-    String logPath = System.getProperty("user.dir") + System.getProperty("file.separator") +
-        "output" + System.getProperty("file.separator") + filename + ".log";
+    String outDir = System.getProperty("user.dir") + System.getProperty("file.separator")  +
+        "output";
+    String csvPath = outDir + System.getProperty("file.separator") + filename + "-bad.csv";
+    dbPath = "jdbc:sqlite:" + outDir +  System.getProperty("file.separator") + filename + ".db";
+    String logPath = outDir + System.getProperty("file.separator") + filename + ".log";
 
     File csvOut = new File(csvPath);
     File logOut = new File(logPath);
     File dbFile = new File(System.getProperty("user.dir") + System.getProperty("file.separator") +
         "output" + System.getProperty("file.separator") + filename + ".db");
+    File outDirectory = new File(outDir);
+    if (!outDirectory.exists()) {
+      outDirectory.mkdir();
+    }
 
     if (csvOut.exists()) {
       csvOut.delete();

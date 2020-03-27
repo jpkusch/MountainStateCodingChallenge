@@ -1,10 +1,8 @@
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * A driver class holding the main method for this application
@@ -27,19 +25,16 @@ public class Driver {
 
     String filePath = System.getProperty("user.dir") + System.getProperty("file.separator") +
         "input" + System.getProperty("file.separator") + args[0] + ".csv";
-    //CSVReader reader = new CSVReader();
+
     Distributor distr = new Distributor(args[0]);
     try {
       CSVReader reader = new CSVReader(new FileReader(filePath));
-      //CSVParser parser = new CSVParser(args[0]);
       boolean validLine = true;
 
       //Get the columns from the first line of the file
-      //String[] values = parser.readLine();
       String[] values = reader.readNext();
       int numColumns = values.length;
 
-      //values = parser.readLine();
       values = reader.readNext();
       while (values != null) {
         validLine = isValid(values, numColumns);
@@ -51,7 +46,6 @@ public class Driver {
         ++numRecords;
 
         distr.write(values, validLine);
-        //values = parser.readLine();
         values = reader.readNext();
       }
     } catch (CsvValidationException | IOException e) {
